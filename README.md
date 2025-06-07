@@ -1,9 +1,12 @@
 # 天気チェッカー
 
-このアプリケーションは、OpenWeatherMapのAPIを使用して指定した都市の天気情報を取得するシンプルなデスクトップアプリケーションです。
+このアプリケーションは、OpenWeatherMapのAPIを使用して指定した都市の天気情報を取得するウェブアプリケーションです。
 
 ## セットアップ
 
+## セットアップ
+
+### ローカル開発環境
 1. 必要なパッケージをインストール:
 ```bash
 pip install -r requirements.txt
@@ -12,12 +15,35 @@ pip install -r requirements.txt
 2. 環境変数を設定:
 ```bash
 setx OPENWEATHERMAP_API_KEY "あなたのAPIキー"
+setx FLASK_SECRET_KEY "あなたのシークレットキー"
 ```
 
 3. アプリケーションを実行:
 ```bash
-python weather_checker.py
+python app.py
 ```
+
+アプリケーションは http://localhost:5000 でアクセスできます。
+
+### Herokuへのデプロイ
+1. Heroku CLIをインストール
+2. アプリケーションを作成:
+```bash
+heroku create
+```
+
+3. 環境変数を設定:
+```bash
+heroku config:set OPENWEATHERMAP_API_KEY="あなたのAPIキー"
+heroku config:set FLASK_SECRET_KEY="あなたのシークレットキー"
+```
+
+4. デプロイ:
+```bash
+git push heroku main
+```
+
+デプロイが完了すると、HerokuのURLでアプリケーションにアクセスできます。
 
 ## 使用方法
 
